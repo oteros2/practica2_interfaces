@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import useCountries from '../hooks/useCountries';
 
@@ -14,7 +14,7 @@ const CountryList = ({ continent, navigation }: CountryListProps) => {
   if (isLoading) {
     return (
       <View style={styles.centered}>
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color="#6200EE" />
       </View>
     );
   }
@@ -28,10 +28,14 @@ const CountryList = ({ continent, navigation }: CountryListProps) => {
           style={styles.item}
           onPress={() => navigation.navigate('CountryDetails', { country: item })}
         >
-          <Text style={styles.name}>{item.name.common}</Text>
-          <Text style={styles.detail}>Capital: {item.capital?.[0]}</Text>
-          <Text style={styles.detail}>Population: {item.population}</Text>
-          <Text style={styles.detail}>Region: {item.region}</Text>
+          <View style={styles.itemContent}>
+            <Image source={{ uri: item.flags.png }} style={styles.image} />
+            <View style={styles.textContainer}>
+              <Text style={styles.name}>{item.name.common}</Text>
+              <Text style={styles.detail}>Capital: {item.capital?.[0] || 'N/A'}</Text>
+              <Text style={styles.detail}>Languages: {item.languages ? Object.values(item.languages).join(', ') : 'N/A'}</Text>
+            </View>
+          </View>
         </TouchableOpacity>
       )}
       contentContainerStyle={styles.list}
@@ -49,15 +53,24 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   item: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#FFFFFF',
     padding: 16,
     marginVertical: 8,
-    borderRadius: 8,
+    borderRadius: 12,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
     elevation: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  itemContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  textContainer: {
+    marginLeft: 16,
   },
   name: {
     fontSize: 18,
@@ -67,6 +80,11 @@ const styles = StyleSheet.create({
   detail: {
     fontSize: 16,
     color: '#666',
+  },
+  image: {
+    width: 50,
+    height: 30,
+    borderRadius: 4,
   },
   error: {
     fontSize: 16,

@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationProp, ParamListBase, RouteProp } from '@react-navigation/native';
 import CountryList from '../components/countriesList';
 import useCountries from '../hooks/useCountries';
+import BackButton from '../components/backButton';
 
 
 type CountryDetailsScreenProps = {
@@ -15,11 +16,8 @@ const CountryDetailsScreen = ({ navigation, route }: CountryDetailsScreenProps) 
   
   return (
     <View >
+      <BackButton />
       <CountryList navigation={navigation} continent={continent} />
-      <Button
-        title="Go to Continent Page"
-        onPress={() => navigation.navigate('Continent')} 
-      />
     </View>
   );
 };

@@ -1,6 +1,7 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationProp, ParamListBase } from '@react-navigation/native'
+import BackButton from '../components/backButton';
 
 type CountryScreenProps = {
   navigation: NavigationProp<ParamListBase>;  
@@ -9,11 +10,8 @@ type CountryScreenProps = {
 const CountryScreen = ( {navigation} : CountryScreenProps) => {
   return (
     <View>
+      <BackButton />
       <Text>CountryScreen</Text>
-      <Button
-        title="Go Continent page"
-        onPress={() => navigation.navigate('Continent')}
-      />
     </View>
   )
 }

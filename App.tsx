@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import HomeScreen from './src/screens/HomeScreen';
 import ContinentScreen from './src/screens/ContinentScreen';
 import CountryScreen from './src/screens/CountryScreen';
 import CountryDetailsScreen from './src/screens/CountryDetailsScreen';
@@ -18,7 +17,7 @@ export default function App(): React.JSX.Element {
                 <Stack.Screen name="Continent" component={ContinentScreen} />
                 <Stack.Screen name="Country" component={CountryScreen} />
                 <Stack.Screen name="CountryDetails" component={CountryDetailsScreen} />
-            </Stack.Navigator>
+            </Stack.Navigator>a
         </NavigationContainer>
         </Provider>
     );
