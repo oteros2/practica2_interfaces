@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
-import { CountriesInfo } from "../config/entities/countriesInfo";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type { CountriesInfo } from "../config/entities/countriesInfo";
 
 export const countriesApi = createApi({
     reducerPath: 'countriesApi', 
