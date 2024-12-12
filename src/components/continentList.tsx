@@ -24,7 +24,7 @@ const ContinentsList = ( {navigation} : ContinentsListProps ) => {
       renderItem={({ item }) => (
         <TouchableOpacity
         style={styles.item}
-        onPress={() => navigation.navigate('Country', { continent: item })}
+        onPress={() => navigation.navigate('CountryDetails', { continent: item })}
       >
         <Text style={styles.text}>{item}</Text>
       </TouchableOpacity>

@@ -17,7 +17,7 @@ export default function App(): React.JSX.Element {
             <Stack.Navigator>
                 <Stack.Screen name="Continent" component={ContinentScreen} />
                 <Stack.Screen name="Country" component={CountryScreen} />
-                <Stack.Screen name="Country details" component={CountryDetailsScreen} />
+                <Stack.Screen name="CountryDetails" component={CountryDetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
         </Provider>

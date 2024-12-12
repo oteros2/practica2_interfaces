@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import ContinentList from '../components/continentList';
@@ -16,5 +16,3 @@ const ContinentScreen = ({ navigation }: ContinentScreenProps) => {
 }
 
 export default ContinentScreen
-
-const styles = StyleSheet.create({})

@@ -11,7 +11,13 @@ export const countriesApi = createApi({
       query: () => 'all',
       transformResponse: (response: DataCountriesResponse[]) => response.map(countryMapper),
     }),
+    getCountriesByContinent: builder.query<CountriesInfo[], string>({
+      query: (continent) => `region/${continent}`,
+      transformResponse: (response: DataCountriesResponse[]): CountriesInfo[] => {
+        return response.map(countryMapper);
+      },
+    }),
   }),
 });
 
-export const { useGetAllCountriesQuery } = countriesApi;
+export const { useGetAllCountriesQuery, useGetCountriesByContinentQuery } = countriesApi;
