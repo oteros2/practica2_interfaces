@@ -5,18 +5,21 @@ import HomeScreen from './src/screens/HomeScreen';
 import ContinentScreen from './src/screens/ContinentScreen';
 import CountryScreen from './src/screens/CountryScreen';
 import CountryDetailsScreen from './src/screens/CountryDetailsScreen';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 
 const Stack = createNativeStackNavigator();
 
 export default function App(): React.JSX.Element {
     return (
+        <Provider store={store}>
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Continent" component={ContinentScreen} />
                 <Stack.Screen name="Country" component={CountryScreen} />
                 <Stack.Screen name="Country details" component={CountryDetailsScreen} />
             </Stack.Navigator>
         </NavigationContainer>
+        </Provider>
     );
 }

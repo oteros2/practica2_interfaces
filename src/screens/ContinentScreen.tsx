@@ -1,19 +1,16 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import ContinentList from '../components/continentList';
 
 type ContinentScreenProps = {
   navigation: NavigationProp<ParamListBase>;
 };
 
-const ContinentScreen = ({ navigation } : ContinentScreenProps) => {
+const ContinentScreen = ({ navigation }: ContinentScreenProps) => {
   return (
     <View>
-      <Text>ContinentScreen</Text>
-      <Button
-        title="Go Country page"
-        onPress={() => navigation.navigate('Country')}
-      />
+      <ContinentList navigation={navigation} />
     </View>
   )
 }

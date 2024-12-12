@@ -11,8 +11,8 @@ const CountryScreen = ( {navigation} : CountryScreenProps) => {
     <View>
       <Text>CountryScreen</Text>
       <Button
-        title="Go Country details page"
-        onPress={() => navigation.navigate('Country details')}
+        title="Go Continent page"
+        onPress={() => navigation.navigate('Continent')}
       />
     </View>
   )
