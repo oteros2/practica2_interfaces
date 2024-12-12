@@ -21,7 +21,7 @@ const BackButton = () => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#6200EE',
+    backgroundColor: '#e8a293',
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 25,

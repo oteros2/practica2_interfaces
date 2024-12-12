@@ -1,21 +1,20 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { NavigationProp, ParamListBase } from '@react-navigation/native'
+import React from 'react';
+import { View } from 'react-native';
+import { useRoute, RouteProp } from '@react-navigation/native';
+import { CountriesInfo } from '../config/entities/countriesInfo';
+import CountryMap from '../components/countryMap';
 import BackButton from '../components/backButton';
 
-type CountryScreenProps = {
-  navigation: NavigationProp<ParamListBase>;  
-}
+const CountryScreen = () => {
+  const route = useRoute<RouteProp<{ params: { country: CountriesInfo } }, 'params'>>();
+  const { country } = route.params;
 
-const CountryScreen = ( {navigation} : CountryScreenProps) => {
   return (
     <View>
       <BackButton />
-      <Text>CountryScreen</Text>
+      <CountryMap country={country} />
     </View>
-  )
-}
+  );
+};
 
-export default CountryScreen
-
-const styles = StyleSheet.create({})
+export default CountryScreen;

@@ -14,10 +14,10 @@ export default function App(): React.JSX.Element {
         <Provider store={store}>
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Continent" component={ContinentScreen} />
-                <Stack.Screen name="Country" component={CountryScreen} />
-                <Stack.Screen name="CountryDetails" component={CountryDetailsScreen} />
-            </Stack.Navigator>a
+                <Stack.Screen name="Continent" component={ContinentScreen} options={{ title: 'Continents page' }}/>
+                <Stack.Screen name="Country" component={CountryScreen}  options={{title: 'Countrie map page'}}/>
+                <Stack.Screen name="CountryDetails" component={CountryDetailsScreen}  options={{title: 'Countries details page'}}/>
+            </Stack.Navigator>
         </NavigationContainer>
         </Provider>
     );

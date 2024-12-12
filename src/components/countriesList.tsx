@@ -9,12 +9,20 @@ type CountryListProps = {
 };
 
 const CountryList = ({ continent, navigation }: CountryListProps) => {
-  const { countries, isLoading } = useCountries(continent);
+  const { countries, isLoading, fetchError} = useCountries(continent);
 
   if (isLoading) {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color="#6200EE" />
+      </View>
+    );
+  }
+
+  if (fetchError) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.error}>{fetchError}</Text>
       </View>
     );
   }
@@ -26,7 +34,7 @@ const CountryList = ({ continent, navigation }: CountryListProps) => {
       renderItem={({ item }) => (
         <TouchableOpacity
           style={styles.item}
-          onPress={() => navigation.navigate('CountryDetails', { country: item })}
+          onPress={() => navigation.navigate('Country', { country: item })}
         >
           <View style={styles.itemContent}>
             <Image source={{ uri: item.flags.png }} style={styles.image} />

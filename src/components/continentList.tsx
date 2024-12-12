@@ -7,12 +7,20 @@ type ContinentsListProps = {
   navigation: NavigationProp<ParamListBase>;
 };
 const ContinentsList = ( {navigation} : ContinentsListProps ) => {
-  const { continents, isLoading } = useContinents();
+  const { continents, isLoading, fetchError } = useContinents();
 
   if (isLoading) {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  if (fetchError) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.error}>{fetchError}</Text>
       </View>
     );
   }
