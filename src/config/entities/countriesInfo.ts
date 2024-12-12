@@ -1,3 +1,4 @@
+// Definicion de la interfaz de los datos de los paises
 export interface CountriesInfo {
     name: {
         common: string;

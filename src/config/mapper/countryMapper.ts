@@ -1,7 +1,7 @@
 import { CountriesInfo } from "../entities/countriesInfo";
 import { DataCountriesResponse } from "../responses/dataCountriesResponse";
 
-
+// Función que mapea los datos de la respuesta de la API a la interfaz personalizada de los datos de los países
 export const countryMapper = (item : DataCountriesResponse) : CountriesInfo => {
     return {
         name: {

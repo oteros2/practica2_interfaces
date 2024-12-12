@@ -5,7 +5,9 @@ import { toggleTheme } from '../slices/themeSlice';
 import { RootState } from '../store/store';
 
 const ThemeButton = () => {
+  // hook para obtener el dispatch
   const dispatch = useDispatch();
+  // hook para obtener el estado del tema
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
 
   return (

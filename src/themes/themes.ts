@@ -1,5 +1,6 @@
 import { Theme } from '@react-navigation/native';
 
+// Definir los temas claro y oscuro
 export const lightTheme: Theme = {
   dark: false,
   colors: {

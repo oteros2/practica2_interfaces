@@ -6,6 +6,7 @@ import { NavigationProp, ParamListBase, useTheme } from '@react-navigation/nativ
 type ContinentsListProps = {
   navigation: NavigationProp<ParamListBase>;
 };
+
 const ContinentsList = ( {navigation} : ContinentsListProps ) => {
   const { continents, isLoading, fetchError } = useContinents();
   const { colors, dark } = useTheme();
@@ -34,6 +35,7 @@ const ContinentsList = ( {navigation} : ContinentsListProps ) => {
         <TouchableOpacity
         style={[
           styles.item,
+          // Establece el color de fondo y borde según el tema
           { backgroundColor: colors.background, borderColor: dark ? '#FFFFFF' : colors.border },
         ]}
         onPress={() => navigation.navigate('CountryDetails', { continent: item })}

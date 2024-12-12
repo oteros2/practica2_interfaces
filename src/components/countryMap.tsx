@@ -9,6 +9,7 @@ type CountryMapProps = {
 };
 
 const CountryMap = ({ country }: CountryMapProps) => {
+  // hook para obtener el tema actual
   const { colors } = useTheme();
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
@@ -17,13 +18,16 @@ const CountryMap = ({ country }: CountryMapProps) => {
       <MapView
         style={styles.map}
         initialRegion={{
+          // Establece la región inicial en la latitud y longitud del país
           latitude: country.latlng[0],
           longitude: country.latlng[1],
+          // Establece el zoom inicial
           latitudeDelta: 12,
           longitudeDelta: 12,
         }}
       >
         <Marker
+        // Establece la coordenada del marcador en la latitud y longitud del país
           coordinate={{
             latitude: country.latlng[0],
             longitude: country.latlng[1],

@@ -9,7 +9,9 @@ type CountryListProps = {
 };
 
 const CountryList = ({ continent, navigation }: CountryListProps) => {
+  // hook para obtener los países de un continente
   const { countries, isLoading, fetchError} = useCountries(continent);
+  //  hook para obtiene el tema actual
   const { colors, dark } = useTheme();
 
   if (isLoading) {
@@ -38,6 +40,7 @@ const CountryList = ({ continent, navigation }: CountryListProps) => {
         <TouchableOpacity
         style={[
           styles.item,
+          // Establece el color de fondo y borde según el tema
           { backgroundColor: colors.background, borderColor: dark ? '#FFFFFF' : colors.border },
         ]}
           onPress={() => navigation.navigate('Country', { country: item })}
