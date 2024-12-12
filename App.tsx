@@ -1,24 +1,45 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, ThemeProvider } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import ContinentScreen from './src/screens/ContinentScreen';
 import CountryScreen from './src/screens/CountryScreen';
 import CountryDetailsScreen from './src/screens/CountryDetailsScreen';
-import { Provider } from 'react-redux';
-import { store } from './src/store/store';
+import { Provider, useSelector } from 'react-redux';
+import { RootState, store } from './src/store/store';
+import { darkTheme, lightTheme } from './src/themes/themes';
+import ThemeButton from './src/components/themeButton';
 
 const Stack = createNativeStackNavigator();
 
-export default function App(): React.JSX.Element {
+const AppNavigator = () => {
+    const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
     return (
-        <Provider store={store}>
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Continent" component={ContinentScreen} options={{ title: 'Continents page' }}/>
-                <Stack.Screen name="Country" component={CountryScreen}  options={{title: 'Countrie map page'}}/>
-                <Stack.Screen name="CountryDetails" component={CountryDetailsScreen}  options={{title: 'Countries details page'}}/>
-            </Stack.Navigator>
+      <ThemeProvider value={isDarkMode ? darkTheme : lightTheme}>
+        <NavigationContainer theme={isDarkMode ? darkTheme : lightTheme}>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen 
+            name="Continents" 
+            component={ContinentScreen} 
+            options={{title:'Continents page', headerRight: () => <ThemeButton/>}}/>
+            <Stack.Screen 
+            name="CountryDetails" 
+            component={CountryDetailsScreen} 
+            options={{title:'Countries details page', headerRight: () => <ThemeButton/>}}
+            />
+            <Stack.Screen 
+            name="Country" 
+            component={CountryScreen} 
+            options={{title:'Country map page', headerRight: () => <ThemeButton/>}}/>
+          </Stack.Navigator>
         </NavigationContainer>
-        </Provider>
+      </ThemeProvider>
     );
-}
+  };
+  
+  export default function App() {
+    return (
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    );
+  }

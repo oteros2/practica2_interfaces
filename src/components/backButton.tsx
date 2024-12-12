@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 
 type RootStackParamList = {
-  Continent: undefined;
+  Continents: undefined;
 };
 
 const BackButton = () => {
@@ -12,7 +12,7 @@ const BackButton = () => {
   return (
     <TouchableOpacity
       style={styles.button}
-      onPress={() => navigation.navigate('Continent')}
+      onPress={() => navigation.navigate('Continents')}
     >
       <Text style={styles.buttonText}>Go to Continent Page</Text>
     </TouchableOpacity>
@@ -21,7 +21,7 @@ const BackButton = () => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#e8a293',
+    backgroundColor: '#6c463e',
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 25,
