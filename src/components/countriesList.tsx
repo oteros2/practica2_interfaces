@@ -29,6 +29,8 @@ const CountryList = ({ continent, navigation }: CountryListProps) => {
   }
 
   return (
+    <View>
+      <Text style={[styles.name, { color: colors.text }]}> Continent: {continent}</Text>
     <FlatList
       data={countries}
       keyExtractor={(item) => item.cca3}
@@ -52,6 +54,7 @@ const CountryList = ({ continent, navigation }: CountryListProps) => {
       )}
       contentContainerStyle={styles.list}
     />
+    </View>
   );
 };
 

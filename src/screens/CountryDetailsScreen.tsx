@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
 import { NavigationProp, ParamListBase, RouteProp } from '@react-navigation/native';
 import CountryList from '../components/countriesList';
