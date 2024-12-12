@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import useContinents from '../hooks/useContinents';
-import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import { NavigationProp, ParamListBase, useTheme } from '@react-navigation/native';
 
 type ContinentsListProps = {
   navigation: NavigationProp<ParamListBase>;
 };
 const ContinentsList = ( {navigation} : ContinentsListProps ) => {
   const { continents, isLoading, fetchError } = useContinents();
+  const { colors, dark } = useTheme();
 
   if (isLoading) {
     return (
@@ -31,13 +32,16 @@ const ContinentsList = ( {navigation} : ContinentsListProps ) => {
       keyExtractor={(item) => item}
       renderItem={({ item }) => (
         <TouchableOpacity
-        style={styles.item}
+        style={[
+          styles.item,
+          { backgroundColor: colors.background, borderColor: dark ? '#FFFFFF' : colors.border },
+        ]}
         onPress={() => navigation.navigate('CountryDetails', { continent: item })}
       >
-        <Text style={styles.text}>{item}</Text>
+        <Text style={[styles.text, { color: colors.text }]}>{item}</Text>
       </TouchableOpacity>
       )}
-      contentContainerStyle={styles.list}
+      contentContainerStyle={[styles.list, { backgroundColor: colors.background }]}
     />
   );
 };
@@ -65,6 +69,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
     elevation: 2,
+    borderWidth: 0.5,
   },
   text: {
     fontSize: 18,

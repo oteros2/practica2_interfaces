@@ -4,7 +4,6 @@ import { useRoute, RouteProp } from '@react-navigation/native';
 import { CountriesInfo } from '../config/entities/countriesInfo';
 import CountryMap from '../components/countryMap';
 import BackButton from '../components/backButton';
-import ThemeButton from '../components/themeButton';
 
 const CountryScreen = () => {
   const route = useRoute<RouteProp<{ params: { country: CountriesInfo } }, 'params'>>();

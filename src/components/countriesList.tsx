@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
-import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import { NavigationProp, ParamListBase, useTheme } from '@react-navigation/native';
 import useCountries from '../hooks/useCountries';
 
 type CountryListProps = {
@@ -10,6 +10,7 @@ type CountryListProps = {
 
 const CountryList = ({ continent, navigation }: CountryListProps) => {
   const { countries, isLoading, fetchError} = useCountries(continent);
+  const { colors, dark } = useTheme();
 
   if (isLoading) {
     return (
@@ -33,15 +34,18 @@ const CountryList = ({ continent, navigation }: CountryListProps) => {
       keyExtractor={(item) => item.cca3}
       renderItem={({ item }) => (
         <TouchableOpacity
-          style={styles.item}
+        style={[
+          styles.item,
+          { backgroundColor: colors.background, borderColor: dark ? '#FFFFFF' : colors.border },
+        ]}
           onPress={() => navigation.navigate('Country', { country: item })}
         >
-          <View style={styles.itemContent}>
+          <View style={[styles.itemContent, { backgroundColor: colors.background }]}>
             <Image source={{ uri: item.flags.png }} style={styles.image} />
             <View style={styles.textContainer}>
-              <Text style={styles.name}>{item.name.common}</Text>
-              <Text style={styles.detail}>Capital: {item.capital?.[0] || 'N/A'}</Text>
-              <Text style={styles.detail}>Languages: {item.languages ? Object.values(item.languages).join(', ') : 'N/A'}</Text>
+              <Text style={[styles.name, { color: colors.text }]}>{item.name.common}</Text>
+              <Text style={[styles.detail, { color: colors.text }]}>Capital: {item.capital?.[0] || 'N/A'}</Text>
+              <Text style={[styles.detail, { color: colors.text }]}>Languages: {item.languages ? Object.values(item.languages).join(', ') : 'N/A'}</Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -72,6 +76,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     flexDirection: 'row',
     alignItems: 'center',
+    borderWidth: 0.5,
   },
   itemContent: {
     flexDirection: 'row',

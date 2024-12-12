@@ -2,15 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { CountriesInfo } from '../config/entities/countriesInfo';
 import MapView, { Marker } from 'react-native-maps';
+import { useTheme } from '@react-navigation/native';
 
 type CountryMapProps = {
   country: CountriesInfo;
 };
 
 const CountryMap = ({ country }: CountryMapProps) => {
+  const { colors } = useTheme();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}> {country.name.common}</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.title, { color: colors.text }]}>{country.name.common}</Text>
       <Image source={{ uri: country.flags.png }} style={styles.flag} />
       <MapView
         style={styles.map}

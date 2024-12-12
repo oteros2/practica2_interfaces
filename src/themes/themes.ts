@@ -7,7 +7,7 @@ export const lightTheme: Theme = {
     background: '#FFFFFF',
     card: '#FFFFFF',
     text: '#000000',
-    border: '#CCCCCC',
+    border: '#000000',
     notification: '#6200EE',
   },
 };
@@ -19,7 +19,7 @@ export const darkTheme: Theme = {
     background: '#121212',
     card: '#1F1B24',
     text: '#FFFFFF',
-    border: '#272727',
+    border: '#FFFFFF',
     notification: '#BB86FC',
   },
 };
